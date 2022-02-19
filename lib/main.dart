@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 //main() is the first method that execute first
 void main() {
   runApp(
-    MaterialApp(
+   MyApp()
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.blueGrey,
         appBar: AppBar(
-          title: const Text("I am Rich!"),
+          title: const Text("I am Rich"),
           backgroundColor: Colors.blueGrey[900],
         ),
         body: const Center(
@@ -16,8 +25,15 @@ void main() {
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
-//centre: is the widget  that allow us to center the other widget/views
-//materiaApp:  grand daddy of all  apps
+
+// for hot reload to work... we had to have things that we want to change
+// either inside stateless widget or stateful widget
+
+// hot reload vs hot restart
+//
+// hot reload -> preserve  state (e.g.  10  will remain as it is..)
+//
+// hot restart- > reset the state of the app
