@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 //main() is the first method that execute first
 void main() {
-  runApp(
-   MyApp()
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,16 +10,40 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blueGrey,
-        appBar: AppBar(
-          title: const Text("I am Rich"),
-          backgroundColor: Colors.blueGrey[900],
-        ),
-        body: const Center(
-          child: Image(
-            image: AssetImage("images/diamond.png"),
+        backgroundColor: Colors.teal,
+        body: SafeArea(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 100.0,
+                color: Colors.red,
+              ),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 100.0,
+                      height: 100.0,
+                      color: Colors.amberAccent,
+                    ),
+                    Container(
+                      width: 100.0,
+                      height: 100.0,
+                      color: Colors.lime,
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                width: 100.0,
+                color: Colors.blue,
+              ),
+            ],
           ),
         ),
       ),
@@ -29,11 +51,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// for hot reload to work... we had to have things that we want to change
-// either inside stateless widget or stateful widget
-
-// hot reload vs hot restart
-//
-// hot reload -> preserve  state (e.g.  10  will remain as it is..)
-//
-// hot restart- > reset the state of the app
+// taget -> https://drive.google.com/uc?export=download&id=1k7oW5qVLJqzw_lEFsOFS_qKmkGjBX1pL
