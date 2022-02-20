@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 //main() is the first method that execute first
@@ -14,35 +15,70 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.teal,
         body: SafeArea(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                width: 100.0,
-                color: Colors.red,
+              const CircleAvatar(
+                radius: 70.0,
+                backgroundImage: AssetImage("images/my_pic.jpeg"),
               ),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      color: Colors.amberAccent,
-                    ),
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      color: Colors.lime,
-                    )
-                  ],
+              const SizedBox(
+                width: double.infinity,
+                height: 8.0,
+              ),
+              const Text("Priyanshu Maurya",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40.0,
+                      fontFamily: 'Pacifico')),
+              Text(
+                "FLUTTER DEVELOPER",
+                style: TextStyle(
+                    color: Colors.teal.shade200,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20.0,
+                    fontFamily: 'SourceSansPro'),
+              ),
+              SizedBox(
+                height: 20.0,
+                width: 200.0,
+                child: Divider(
+                  color: Colors.teal.shade100,
                 ),
               ),
-              Container(
-                width: 100.0,
-                color: Colors.blue,
+              const Card(
+                margin: EdgeInsets.symmetric(horizontal: 40.0,vertical: 8.0),
+                child: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.phone,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "+911234567890"
+                    ),
+                  ),
+                ),
               ),
+              const Card(
+                margin: EdgeInsets.symmetric(horizontal: 40.0,vertical: 8.0),
+                child: Padding(
+                  padding: EdgeInsets.all(5.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.email,
+                      color: Colors.teal,
+                    ),
+                    title: Text(
+                      "priyanshumaurya.8868@gmail.com",
+
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
