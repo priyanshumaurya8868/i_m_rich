@@ -1,90 +1,65 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-//main() is the first method that execute first
 void main() {
-  runApp(MyApp());
+  return runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: const Text('Dicee'),
+          backgroundColor: Colors.red,
+        ),
+        body: const DicePage(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class DicePage extends StatefulWidget {
+  const DicePage({Key? key}) : super(key: key);
+
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int left_dice = 1;
+  int right_dice = 2;
+
+  void shuffle(){
+    left_dice = Random().nextInt(6)+1;
+    right_dice = Random().nextInt(6)+1;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CircleAvatar(
-                radius: 70.0,
-                backgroundImage: AssetImage("images/my_pic.jpeg"),
-              ),
-              const SizedBox(
-                width: double.infinity,
-                height: 8.0,
-              ),
-              const Text("Priyanshu Maurya",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 40.0,
-                      fontFamily: 'Pacifico')),
-              Text(
-                "FLUTTER DEVELOPER",
-                style: TextStyle(
-                    color: Colors.teal.shade200,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    fontFamily: 'SourceSansPro'),
-              ),
-              SizedBox(
-                height: 20.0,
-                width: 200.0,
-                child: Divider(
-                  color: Colors.teal.shade100,
-                ),
-              ),
-              const Card(
-                margin: EdgeInsets.symmetric(horizontal: 40.0,vertical: 8.0),
-                child: Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.phone,
-                      color: Colors.teal,
-                    ),
-                    title: Text(
-                      "+911234567890"
-                    ),
-                  ),
-                ),
-              ),
-              const Card(
-                margin: EdgeInsets.symmetric(horizontal: 40.0,vertical: 8.0),
-                child: Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.email,
-                      color: Colors.teal,
-                    ),
-                    title: Text(
-                      "priyanshumaurya.8868@gmail.com",
-
-                    ),
-                  ),
-                ),
-              )
-            ],
+    return Center(
+      child: Row(
+        children: [
+          Expanded(
+            child: FlatButton(
+              onPressed: (){
+               setState(() {
+                 shuffle();
+               });
+              },
+              child: Image.asset("images/dice$left_dice.png"),
+            ),
           ),
-        ),
+
+          Expanded(
+            child: FlatButton(
+              onPressed: (){
+               setState(() {
+                 shuffle();
+               });
+              },
+              child: Image.asset("images/dice$right_dice.png"),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-
-// taget -> https://drive.google.com/uc?export=download&id=1k7oW5qVLJqzw_lEFsOFS_qKmkGjBX1pL
