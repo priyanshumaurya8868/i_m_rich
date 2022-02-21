@@ -5,10 +5,10 @@ void main() {
   return runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue,
         appBar: AppBar(
-          title: const Text('Dicee'),
-          backgroundColor: Colors.red,
+          title: const Text('Ask Me Anything'),
+          backgroundColor: Colors.blue.shade600,
         ),
         body: const DicePage(),
       ),
@@ -28,8 +28,7 @@ class _DicePageState extends State<DicePage> {
   int right_dice = 2;
 
   void shuffle(){
-    left_dice = Random().nextInt(6)+1;
-    right_dice = Random().nextInt(6)+1;
+    left_dice = Random().nextInt(5)+1;
   }
 
   @override
@@ -39,23 +38,14 @@ class _DicePageState extends State<DicePage> {
         children: [
           Expanded(
             child: FlatButton(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.white,
               onPressed: (){
                setState(() {
                  shuffle();
                });
               },
-              child: Image.asset("images/dice$left_dice.png"),
-            ),
-          ),
-
-          Expanded(
-            child: FlatButton(
-              onPressed: (){
-               setState(() {
-                 shuffle();
-               });
-              },
-              child: Image.asset("images/dice$right_dice.png"),
+              child: Image.asset("images/ball$left_dice.png"),
             ),
           ),
         ],
