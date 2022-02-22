@@ -39,12 +39,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  audioplayers: ^0.20.1
 
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
   assets:
-    - images/
+    - assets/
   fonts:
     - family: Pacifico
       fonts:

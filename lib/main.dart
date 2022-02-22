@@ -1,53 +1,56 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   return runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          title: const Text('Ask Me Anything'),
-          backgroundColor: Colors.blue.shade600,
-        ),
-        body: const DicePage(),
+        backgroundColor: Colors.black87,
+        body: XylophonePage(),
       ),
     ),
   );
 }
 
-class DicePage extends StatefulWidget {
-  const DicePage({Key? key}) : super(key: key);
+class XylophonePage extends StatefulWidget {
+  const XylophonePage({Key? key}) : super(key: key);
+
+
 
   @override
-  _DicePageState createState() => _DicePageState();
+  _XylophonePageState createState() => _XylophonePageState();
 }
 
-class _DicePageState extends State<DicePage> {
-  int left_dice = 1;
-  int right_dice = 2;
+class _XylophonePageState extends State<XylophonePage> {
 
-  void shuffle(){
-    left_dice = Random().nextInt(5)+1;
-  }
-
+  Expanded coloredButton({required Color color , required int toneNumber}) =>
+      Expanded(
+        child: TextButton(
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(0.0),
+          ),
+          onPressed: () {
+            AudioCache player = AudioCache();
+            player.play("note$toneNumber.wav");
+          },
+          child: Container(
+            color:  color,
+          ),
+        ),
+      );
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
+    return SafeArea(
+      child: Column(
         children: [
-          Expanded(
-            child: FlatButton(
-              highlightColor: Colors.transparent,
-              splashColor: Colors.white,
-              onPressed: (){
-               setState(() {
-                 shuffle();
-               });
-              },
-              child: Image.asset("images/ball$left_dice.png"),
-            ),
-          ),
+          coloredButton(color : Colors.red, toneNumber: 1),
+          coloredButton(color: Colors.orange,toneNumber: 2),
+          coloredButton(color: Colors.yellow,toneNumber: 3),
+          coloredButton(color : Colors.green, toneNumber: 4),
+          coloredButton(color: Colors.blue,toneNumber: 5),
+          coloredButton(color: Colors.indigoAccent,toneNumber: 6),
+          coloredButton(color : Colors.purple, toneNumber: 7),
+
         ],
       ),
     );
